@@ -1,0 +1,23 @@
+apiVersion : networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nss-web
+spec:
+  rules:
+  - host: www.nss.com
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: nss-service 
+            port:
+              number: 3000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nss-webservice
+            port:
+              number: 80

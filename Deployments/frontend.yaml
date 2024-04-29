@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nssdeployment
+spec:
+  selector:
+    matchLabels:
+      app: nss-front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nss-front
+    spec:
+      containers:
+      - name: nginx
+        image: frontnss:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: nss-webservice
+spec:
+  selector:
+    app: nss-front
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

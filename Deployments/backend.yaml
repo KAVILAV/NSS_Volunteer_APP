@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nss-deployment
+  labels:
+    app: nss
+spec:
+  selector:
+    matchLabels:
+      app: nss
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nss
+    spec:
+      containers:
+      - name: hello
+        image: nss:latest
+        imagePullPolicy: Never
+        ports:
+        - name: http
+          containerPort: 3000 
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: nss-service
+spec:
+  selector:
+    app: nss
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 3000 		
+    targetPort: 3000
