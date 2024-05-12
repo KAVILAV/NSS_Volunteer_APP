@@ -28,7 +28,7 @@ const AdminSignUp = () => {
       .post("http://localhost:27000/admin/signup", formData)
       .then((response) => {
         alert("Signup successful");
-        navigate('/uservolunteer'); // Navigate to the volunteerActivity page
+        navigate('/ActivityVolunteer'); // Navigate to the volunteerActivity page
       })
       .catch((error) => {
         alert("Signup failed. Please try again.");
