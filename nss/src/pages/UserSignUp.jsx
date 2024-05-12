@@ -28,7 +28,7 @@ const UserSignUp = () => {
       .post("http://localhost:27000/user/signup", formData)
       .then((response) => {
         alert("Signup successful");
-        navigate('/ActivityVolunteer'); // Navigate to the volunteerActivity page
+        navigate('/uservolunteer'); // Navigate to the volunteerActivity page
       })
       .catch((error) => {
         alert("Signup failed. Please try again.");
